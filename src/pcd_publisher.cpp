@@ -44,10 +44,16 @@ private:
 
 int main(int argc, char* argv[])
 {
+    /*
+    if (argc != 2)
+    {
+        std::cerr << "Usage: " << argv[0] << " <pcd_file_path>" << std::endl;
+        return 1;
+    }
+    */
 
     auto pcd_path = ament_index_cpp::get_package_share_directory("pcd_publisher") + "/maps/" + "map.pcd";
 
-    // std::string pcd_path = "";
     rclcpp::init(argc, argv);
     rclcpp::spin(std::make_shared<PCDPublisher>(pcd_path));
     rclcpp::shutdown();

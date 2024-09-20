@@ -4,7 +4,7 @@
   <name>pcd_publisher</name>
   <version>0.0.0</version>
   <description>TODO: Package description</description>
-  <maintainer email="omer.sayed@micropolis.ai">omer</maintainer>
+  <maintainer email="omerseyyidd@gmail.com">omersayed</maintainer>
   <license>TODO: License declaration</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
