@@ -6,10 +6,13 @@
 #include <ament_index_cpp/get_package_share_directory.hpp>
 #include <string>
 
+
+using std::string;
+
 class PCDPublisher : public rclcpp::Node
 {
 public:
-    PCDPublisher(const std::string& pcd_file_path)
+    PCDPublisher(const string& pcd_file_path)
     : Node("pcd_publisher"), pcd_file_path_(pcd_file_path)
     {
         publisher_ = this->create_publisher<sensor_msgs::msg::PointCloud2>("pointcloud", 10);
@@ -38,24 +41,24 @@ private:
 
     rclcpp::Publisher<sensor_msgs::msg::PointCloud2>::SharedPtr publisher_;
     rclcpp::TimerBase::SharedPtr timer_;
-    std::string pcd_file_path_;
+    string pcd_file_path_;
     pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_{new pcl::PointCloud<pcl::PointXYZ>};
 };
 
 int main(int argc, char* argv[])
 {
-    /*
     if (argc != 2)
     {
         std::cerr << "Usage: " << argv[0] << " <pcd_file_path>" << std::endl;
         return 1;
     }
-    */
 
-    auto pcd_path = ament_index_cpp::get_package_share_directory("pcd_publisher") + "/maps/" + "map.pcd";
+    // uncomment this if you wanna use a file inside of the package's share directory
+    // string pcd_file = "map.pcd"; 
+    // auto pcd_path = ament_index_cpp::get_package_share_directory("pcd_publisher") + "/maps/" + pcd_file;
 
     rclcpp::init(argc, argv);
-    rclcpp::spin(std::make_shared<PCDPublisher>(pcd_path));
+    rclcpp::spin(std::make_shared<PCDPublisher>(argv[1]));
     rclcpp::shutdown();
     return 0;
 }
