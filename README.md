@@ -37,7 +37,7 @@ This ROS2 package provides a node that reads a PCD (Point Cloud Data) file and p
 Run the node:
 
 ```bash
-ros2 run pcd_publisher pcd_publisher 
+ros2 run pcd_publisher pcd_publisher /path/to/pcd
 ```
 
 The node will publish the point cloud data on the `/pointcloud` topic.
