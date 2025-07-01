@@ -15,7 +15,7 @@ public:
     PCDPublisher(const string& pcd_file_path)
     : Node("pcd_publisher"), pcd_file_path_(pcd_file_path)
     {
-        publisher_ = this->create_publisher<sensor_msgs::msg::PointCloud2>("pointcloud", 10);
+        publisher_ = this->create_publisher<sensor_msgs::msg::PointCloud2>("/pcd_map", 10);
         timer_ = this->create_wall_timer(
             std::chrono::seconds(1),
             std::bind(&PCDPublisher::publish_pointcloud, this));

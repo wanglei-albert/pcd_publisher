@@ -20,10 +20,10 @@ add_definitions(${PCL_DEFINITIONS})
 # Create the executable
 add_executable(pcd_publisher src/pcd_publisher.cpp)
 ament_target_dependencies(pcd_publisher
-rclcpp
-sensor_msgs
-PCL
-pcl_conversions
+  rclcpp
+  sensor_msgs
+  PCL
+  pcl_conversions
 )
 target_link_libraries(pcd_publisher ${PCL_LIBRARIES})
 
